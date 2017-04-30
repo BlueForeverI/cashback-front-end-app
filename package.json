@@ -1,7 +1,7 @@
 {
-  "name": "express-vue-super-simple",
+  "name": "cashback-app-front-end",
   "version": "1.0.0",
-  "description": "super simple example for express-vue",
+  "description": "Cashback App",
   "main": "index.js",
   "directories": {
     "example": "examples"
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danmademe/express-vue-super-simple.git"
+    "url": "git+https://github.com/BlueForeverI/cashback-front-end-app.git"
   },
-  "author": "Daniel Cherubini",
-  "license": "ISC",
+  "author": "Georgi Yolovski",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/danmademe/express-vue/issues"
+    "url": "https://github.com/BlueForeverI/cashback-front-end-app/issues"
   },
-  "homepage": "https://github.com/danmademe/express-vue-super-simple#readme",
+  "homepage": "https://github.com/BlueForeverI/cashback-front-end-app#readme",
   "dependencies": {
     "express": "^4.15.2",
     "express-vue": "^3.9.6"
