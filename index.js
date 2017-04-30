@@ -69,5 +69,6 @@ app.get('/users/:userName', function(req, res){
     });
 });
 
-app.listen(80);
-console.log('Express server listening on port 80');
+var port = process.env.PORT || 3000;
+app.listen(port);
+console.log('Express server listening on port ' + port);
