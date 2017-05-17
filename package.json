@@ -7,7 +7,8 @@
     "example": "examples"
   },
   "scripts": {
-    "preinstall": "npm install typings -g | npm install webpack-dev-server -g",
+    "preinstall": "npm install typings -g",
+    "prestart": "npm install webpack-dev-server -g",
     "start": "npm run dev",
     "dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
     "clean": "rm -rf dist",
