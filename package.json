@@ -10,7 +10,7 @@
     "preinstall": "npm install typings -g",
     "prestart": "npm install webpack-dev-server -g",
     "start": "npm run dev",
-    "dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+    "dev": "webpack-dev-server --content-base src/",
     "clean": "rm -rf dist",
     "build": "webpack",
     "postinstall": "typings install"
