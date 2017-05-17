@@ -8,7 +8,6 @@
   },
   "scripts": {
     "preinstall": "npm install typings -g",
-    "prestart": "npm install webpack-dev-server -g",
     "start": "npm run dev",
     "dev": "webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
     "clean": "rm -rf dist",
@@ -25,7 +24,7 @@
     "url": "https://github.com/BlueForeverI/cashback-front-end-app/issues"
   },
   "homepage": "https://github.com/BlueForeverI/cashback-front-end-app#readme",
-  "devDependencies": {
+  "dependencies": {
     "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.23.1",
     "file-loader": "^0.9.0",
@@ -41,9 +40,7 @@
     "typings": "^1.3.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^1.14.1",
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.4",
     "vue": "^1.0.26",
