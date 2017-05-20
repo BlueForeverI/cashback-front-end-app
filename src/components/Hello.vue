@@ -21,15 +21,15 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import {
-  Component
-} from 'vue-property-decorator'
+  import Vue from 'vue'
+  import {
+    Component
+  } from 'vue-property-decorator'
 
-@Component
-export default class Hello extends Vue {
-  msg: string = 'Welcome to Your Vue.js App'
-}
+  @Component
+  export default class Hello extends Vue {
+    msg: string = 'Welcome to Your Vue.js App'
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

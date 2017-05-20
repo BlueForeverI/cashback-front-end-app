@@ -22,6 +22,6 @@ export default new Router({
   }, {
     path: '/demo',
     name: 'Demo',
-    component: resolve => require(['@/components/demo/index'], modules => resolve(modules.default)) // ts 文件返回来的不是VueComponent而是modules
+    component: resolve => require(['@/components/demo/index'], modules => resolve(modules.default)) 
   }]
 })
