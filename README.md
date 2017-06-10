@@ -1,15 +1,11 @@
-# kt-op-pano-frontend
+# cashback-front-end-app
 
-> A Vue.js project
+> cashback app
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-suggest using yarn:
-First globally install yarn. Run `npm install yarn -g` and then run `yarn install`
-
-Fallback:
 npm install
 
 # serve with hot reload at localhost:8080
@@ -20,9 +16,6 @@ npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
-
-# run unit tests
-npm run unit
 
 # run e2e tests
 npm run e2e
