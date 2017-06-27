@@ -14,14 +14,20 @@
 export default {
   data () {
     return {
-      email: 'yolo@hustler.com',
+      email: '',
       pass: ''
     }
   },
   methods: {
-    login () {
-      console.log('trying to login with ' + this.email + ' and pass ' + this.pass);
-    }
+    login() {
+      console.log('going to dispatch event')
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password
+      }).then(() => {
+        this.$router.push("/success")
+    });
   }
+}
 }
 </script>

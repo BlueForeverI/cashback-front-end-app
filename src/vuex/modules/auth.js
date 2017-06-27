@@ -14,13 +14,14 @@ const getters = {
 // actions
 const actions = {
   login ({ commit }, credentials) {
-    // just example
+    localStorage.setItem('token', 'OAUTH2-Token');
     auth.login(response => {
       localStorage.setItem('token', 'OAUTH2-Token');
       commit(types.LOGIN_SUCCESS)
     })
   },
   logout  ({ commit }) {
+    localStorage.removeItem("token");
     commit(types.LOGOUT)
   }
 }
@@ -29,6 +30,7 @@ const actions = {
 const mutations = {
   [types.LOGIN_SUCCESS] (state) {
     state.isLoggedIn = true;
+    console.log('here baby')
   },
   [types.LOGOUT] (state) {
     state.isLoggedIn = false;
