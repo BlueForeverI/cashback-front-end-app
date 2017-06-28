@@ -8,7 +8,7 @@ const state = {
 
 // getters
 const getters = {
-  allNotes: state => state.shops
+  allShops: state => state.shops
 }
 
 // actions
