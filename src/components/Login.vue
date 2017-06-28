@@ -3,7 +3,7 @@
     <h2>Login</h2>
     <form @submit.prevent="login">
       <label><input v-model="email" placeholder="email"></label>
-      <label><input v-model="pass" placeholder="password" type="password"></label><br>
+      <label><input v-model="password" placeholder="password" type="password"></label><br>
       <button type="submit">login</button>
     </form>
   </div>
@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       email: '',
-      pass: ''
+      password: ''
     }
   },
   methods: {

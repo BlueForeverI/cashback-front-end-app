@@ -14,9 +14,8 @@ const getters = {
 // actions
 const actions = {
   login ({ commit }, credentials) {
-    localStorage.setItem('token', 'OAUTH2-Token');
-    auth.login(response => {
-      localStorage.setItem('token', 'OAUTH2-Token');
+    auth.login(credentials, response => {
+      localStorage.setItem('token', response.data.access_token);
       commit(types.LOGIN_SUCCESS)
     })
   },
