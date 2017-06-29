@@ -6,10 +6,12 @@
       <label><input v-model="password" placeholder="password" type="password"></label><br>
       <button type="submit">login</button>
     </form>
+    <p>{{errorMessage}}</p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -18,6 +20,11 @@ export default {
       password: ''
     }
   },
+  computed: {
+    ...mapGetters([
+      'errorMessage',
+    ])
+  },
   methods: {
     login() {
       console.log('going to dispatch event')
@@ -25,7 +32,10 @@ export default {
         email: this.email,
         password: this.password
       }).then(() => {
-        this.$router.push("/success")
+        if (this.errorMessage=='') {
+          this.$router.replace(this.$route.query.redirect || '/')
+        }
+      
     });
   }
 }

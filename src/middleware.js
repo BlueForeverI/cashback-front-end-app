@@ -6,11 +6,12 @@ export default {
     },
  
     auth (to, from, next) {
+    	console.log('to route', to)
         next(store.getters.isLoggedIn ? true : {
             path: '/login',
             query: {
-                redirect: to.name
-            }  
+                redirect: to.fullPath
+            }
         })
     }
 }

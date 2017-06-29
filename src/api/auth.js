@@ -2,7 +2,7 @@ import axios from 'axios'
 const querystring = require('querystring');
 
 export default {
-  login (credentials, callback) {
+  login (credentials, callback, errorCallback) {
   	console.log('logging in with credentials ' + credentials.email +' and '+ credentials.password)
   	axios.request({
 	  url: "/oauth/token",
@@ -19,6 +19,6 @@ export default {
 	  	'Authorization': 'Basic dXNlcjpwYXNzd29yZDE=',
 	  	'Content-Type':'application/x-www-form-urlencoded'
 	  }
-	}).then((response) => callback(response))
+	}).then((response) => callback(response)).catch((error) => errorCallback(error));
   }
 }
