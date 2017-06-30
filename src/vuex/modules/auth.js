@@ -1,4 +1,5 @@
 import auth from '../../api/auth'
+import router from '../../router/index'
 import * as types from '../mutation-types'
 
 // initial state
@@ -17,11 +18,12 @@ const getters = {
 const actions = {
   login ({ commit }, credentials) {
     auth.login(credentials, response => {
-      localStorage.setItem('token', response.data.access_token);
-      commit(types.LOGIN_SUCCESS)
-    }, error => {
-      commit(types.LOGIN_ERROR, { errorMessage: error.response.data.error_description})
-    })
+        localStorage.setItem('token', response.data.access_token);
+        commit(types.LOGIN_SUCCESS)
+        router.push(credentials.redirect)
+      }, error => {
+        commit(types.LOGIN_ERROR, { errorMessage: error.response.data.error_description})
+      })
   },
   logout  ({ commit }) {
     localStorage.removeItem("token");
@@ -33,7 +35,7 @@ const actions = {
 const mutations = {
   [types.LOGIN_SUCCESS] (state) {
     state.isLoggedIn = true;
-    state.errorMessage ='';
+    state.errorMessage =''; //not sure if this is the best place to clear the error message
   },
   [types.LOGOUT] (state) {
     state.isLoggedIn = false;
