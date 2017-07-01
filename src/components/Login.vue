@@ -27,16 +27,11 @@ export default {
   },
   methods: {
     login() {
-      console.log('going to dispatch event')
       this.$store.dispatch("login", {
         email: this.email,
-        password: this.password
-      }).then(() => {
-        if (this.errorMessage=='') {
-          this.$router.replace(this.$route.query.redirect || '/')
-        }
-      
-    });
+        password: this.password,
+        redirect: this.$route.query.redirect || '/'
+      });
   }
 }
 }
