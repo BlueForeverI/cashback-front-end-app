@@ -31,5 +31,18 @@ export default {
                     console.log('Error', error.message);
                 }
             });
+    },
+    googleLogin(googleToken, callback, errorCallback) {
+        var config = {
+            headers: {
+                'Authorization': 'Bearer ' + googleToken
+            }
+        }
+
+        axios.get(api_url + '/oauth/token/google', config)
+            .then((response) => callback(response))
+            .catch((error) => {
+                errorCallback(error);
+            });
     }
 }
