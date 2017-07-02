@@ -1,0 +1,5 @@
+export const api_url = "http://localhost:8081"
+export const grant_type = "password"
+export const client_id = "cashback-private-content"
+export const client_secret = "NV2MfFAP4drPaHBC"
+export const scope = "read write"
