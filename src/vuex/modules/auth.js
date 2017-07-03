@@ -30,13 +30,26 @@ const actions = {
         commit(types.LOGOUT)
     },
     googleLogin({ commit }, googleToken) {
-        auth.googleLogin(googleToken, response => {
-            localStorage.setItem('token', response.data.access_token);
-            commit(types.LOGIN_SUCCESS)
-            router.push('/')
-        }, error => {
-            commit(types.LOGIN_ERROR, { errorMessage: error.response.data.error_description })
-        })
+        auth.googleLogin(googleToken)
+            .then(response => {
+                localStorage.setItem('token', response.data.access_token);
+                commit(types.LOGIN_SUCCESS)
+                router.push('/')
+            }, error => {
+                commit(types.LOGIN_ERROR, { errorMessage: error.response.data.error_description })
+            })
+    },
+    register({ commit }, userData) {
+        return new Promise((resolve, reject) => {
+            auth.register(userData)
+                .then(response => {
+                    commit(types.REGISTER_SUCCESS)
+                    resolve(response);
+                }, error => {
+                    commit(types.REGISTER_ERROR, { errorMessage: error })
+                    reject(error);
+                })
+        });
     }
 }
 
@@ -51,6 +64,12 @@ const mutations = {
     },
     [types.LOGIN_ERROR](state, { errorMessage }) {
         state.errorMessage = errorMessage
+    },
+    [types.REGISTER_SUCCESS](state) {
+        state.errorMessage = '';
+    },
+    [types.REGISTER_ERROR](state, { errorMessage }) {
+        state.errorMessage = errorMessage;
     }
 }
 

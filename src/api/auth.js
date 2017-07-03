@@ -32,17 +32,32 @@ export default {
                 }
             });
     },
-    googleLogin(googleToken, callback, errorCallback) {
+    googleLogin(googleToken) {
         var config = {
             headers: {
                 'Authorization': 'Bearer ' + googleToken
             }
         }
 
-        axios.get(api_url + '/oauth/token/google', config)
-            .then((response) => callback(response))
-            .catch((error) => {
-                errorCallback(error);
-            });
+        return new Promise((resolve, reject) => {
+            axios.get(api_url + '/oauth/token/google', config)
+                .then((response) => resolve(response))
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    },
+    register(userData) {
+        var config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        return new Promise((resolve, reject) => {
+            axios.post(api_url + '/api/user', JSON.stringify(userData), config)
+                .then(response => resolve(response))
+                .catch(error => reject(error))
+        });
     }
 }
