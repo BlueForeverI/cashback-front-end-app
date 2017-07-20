@@ -10,11 +10,11 @@ import Guard from '../middleware'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        { path: '/resources', name: 'Resources', component: Resources },
-        { path: '/about', name: 'About', component: About },
-        { path: '/dashboard', name: 'Dashboard', component: Dashboard, beforeEnter: Guard.auth },
-        { path: '/login', name: 'Login', component: Login, beforeEnter: Guard.guest },
-        { path: '/register', name: 'Register', component: Register }
-    ]
+  routes: [
+    { path: '/resources', name: 'Resources', component: Resources },
+    { path: '/about', name: 'About', component: About },
+    { path: '/dashboard', name: 'Dashboard', component: Dashboard , beforeEnter: Guard.auth},
+    { path: '/login', name: 'Login', component: Login , beforeEnter: Guard.guest},
+    { path: '/register', name: 'Register', component: Register , beforeEnter: Guard.guest}
+  ]
 })
