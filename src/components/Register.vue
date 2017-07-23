@@ -85,6 +85,10 @@ export default {
   },
   methods: {
     register() {
+      if(this.$v.$invalid===true){
+        return;
+      }
+      
       this.$store.dispatch("register", {
         firstName: this.firstName,
         lastName: this.lastName,
