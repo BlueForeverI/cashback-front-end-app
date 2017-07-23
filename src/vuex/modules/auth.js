@@ -28,7 +28,7 @@ const actions = {
   register ({ commit }, userData){
     auth.register(userData, response => {
        //commit(types.REGISTER_SUCCESS)
-       console.log('you register successfully')
+       console.log('you register successfullyd')
        router.push('/login')
     }, error => {
        console.log('your registration failed')

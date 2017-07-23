@@ -6,8 +6,10 @@ import Dashboard from '@/components/Dashboard'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Guard from '../middleware'
+import Vuelidate from 'vuelidate'
 
 Vue.use(Router)
+Vue.use(Vuelidate)
 
 export default new Router({
   routes: [
