@@ -5,6 +5,7 @@
       <router-link to="/resources">Resources</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
+      <router-link to="/register" v-if="!isLoggedIn">Register</router-link>
       <a href="#" v-if="isLoggedIn" @click="logout">Logout</a> 
     </p>
     <router-view></router-view>
