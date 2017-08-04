@@ -20,9 +20,19 @@ const actions = {
         auth.login(credentials, response => {
             localStorage.setItem('token', response.data.access_token);
             commit(types.LOGIN_SUCCESS)
-            router.push('credentials.redirect')
+            router.push(credentials.redirect)
         }, error => {
-            commit(types.LOGIN_ERROR, { errorMessage: error.response.data.error_description })
+            commit(types.ERROR, { errorMessage: error.response.data.error_description })
+        })
+    },
+    register({ commit }, userData) {
+        auth.register(userData).then(response => {
+            //commit(types.REGISTER_SUCCESS)
+            console.log('you register successfullyd')
+            router.push('/login')
+        }, error => {
+            console.log('your registration failed')
+            commit(types.ERROR, { errorMessage: error.response.data.errorMessage })
         })
     },
     logout({ commit }) {
@@ -34,22 +44,10 @@ const actions = {
             .then(response => {
                 localStorage.setItem('token', response.data.access_token);
                 commit(types.LOGIN_SUCCESS)
-                router.push('/')
+                router.push("/")
             }, error => {
-                commit(types.LOGIN_ERROR, { errorMessage: error.response.data.error_description })
+                commit(types.ERROR, { errorMessage: error.response.data.error_description })
             })
-    },
-    register({ commit }, userData) {
-        return new Promise((resolve, reject) => {
-            auth.register(userData)
-                .then(response => {
-                    commit(types.REGISTER_SUCCESS)
-                    resolve(response);
-                }, error => {
-                    commit(types.REGISTER_ERROR, { errorMessage: error })
-                    reject(error);
-                })
-        });
     }
 }
 
@@ -62,14 +60,8 @@ const mutations = {
     [types.LOGOUT](state) {
         state.isLoggedIn = false;
     },
-    [types.LOGIN_ERROR](state, { errorMessage }) {
+    [types.ERROR](state, { errorMessage }) {
         state.errorMessage = errorMessage
-    },
-    [types.REGISTER_SUCCESS](state) {
-        state.errorMessage = '';
-    },
-    [types.REGISTER_ERROR](state, { errorMessage }) {
-        state.errorMessage = errorMessage;
     }
 }
 
