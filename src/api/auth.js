@@ -32,27 +32,32 @@ export default {
                 }
             });
     },
-    register(credentials, callback, errorCallback) {
-        var data = {
-            "firstName": credentials.firstName,
-            "lastName": credentials.lastName,
-            "email": credentials.email,
-            "password": credentials.password
+    googleLogin(googleToken) {
+        var config = {
+            headers: {
+                'Authorization': 'Bearer ' + googleToken
+            }
         }
 
-        console.log(data)
-        axios.post(api_url + '/api/user', data)
-            .then((response) => callback(response))
-            .catch((error) => {
-                if (error.response) {
-                    console.log('server error')
-                    console.log(error.response.data);
-                    errorCallback(error)
-                } else {
-                    console.log('request error')
-                    console.log('Error', error.message);
-                    errorCallback(error)
-                }
-            });
+        return new Promise((resolve, reject) => {
+            axios.get(api_url + '/oauth/token/google', config)
+                .then((response) => resolve(response))
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+    },
+    register(userData) {
+        var config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        return new Promise((resolve, reject) => {
+            axios.post(api_url + '/api/user', JSON.stringify(userData), config)
+                .then(response => resolve(response))
+                .catch(error => reject(error))
+        });
     }
 }

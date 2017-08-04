@@ -42,6 +42,12 @@
       <span v-if="$v.confirm_password.$error && !$v.confirm_password.sameAsPassword">Two passwords do not match.</span><br/>
 
       <button type="submit">register</button>
+      <g-signin-button
+            :params="googleSignInParams"
+            @success="onGoogleSignInSuccess"
+            @error="onGoogleSignInError">
+            Register with Google
+      </g-signin-button>
     </form>
     <p>{{errorMessage}}</p>
   </div>
@@ -58,7 +64,10 @@ export default {
       lastName: '',
       email: '',
       password: '',
-      confirm_password:''
+      confirm_password:'',
+      googleSignInParams: {
+                client_id: '366762494274-ocpbfj8q34pgn6f4omkt8l5jq5bhk3bd.apps.googleusercontent.com'
+      }
     }
   },
   validations:{
@@ -96,8 +105,27 @@ export default {
         password: this.password,
         redirect: this.$route.query.redirect || '/'
       });
-  }
-}
+    },
+    onGoogleSignInSuccess (googleUser) {
+            var self = this;
+            var profile = googleUser.getBasicProfile();
+            this.$store.dispatch('register', {
+                email: profile['U3'],
+                password: profile['Eea'],
+                firstName: profile['ofa'],
+                lastName: profile['wea'],
+                imageUrl: profile['Paa']
+            })
+            .then(response => {
+                var token = googleUser.Zi.access_token;
+                self.$store.dispatch("googleLogin", token);
+            },
+            error => console.log(error));
+        },
+    onGoogleSignInError (error) {
+      console.log('OH NOES', error)
+    } 
+    }
 }
 </script>
 
@@ -114,5 +142,14 @@ export default {
 .valid {
   border-color: #5A5;
   background: #EFE;
+}
+
+.g-signin-button {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #3c82f7;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
 }
 </style>
