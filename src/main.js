@@ -5,9 +5,11 @@ import App from './App'
 import router from './router'
 import store from './vuex/store'
 import GSignInButton from 'vue-google-signin-button'
+import FBSignInButton from 'vue-facebook-signin-button'
 
 Vue.config.productionTip = false
 Vue.use(GSignInButton);
+Vue.use(FBSignInButton)
 
 /* eslint-disable no-new */
 new Vue({

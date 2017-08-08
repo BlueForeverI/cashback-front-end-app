@@ -32,20 +32,25 @@ export default {
                 }
             });
     },
-    googleLogin(googleToken) {
+    externalLogin(token, provider) {
         var config = {
             headers: {
-                'Authorization': 'Bearer ' + googleToken
+                'Authorization': 'Bearer ' + token
             }
         }
-
         return new Promise((resolve, reject) => {
-            axios.get(api_url + '/oauth/token/google', config)
+            axios.get(api_url + '/oauth/token/' + provider, config)
                 .then((response) => resolve(response))
                 .catch((error) => {
                     reject(error);
                 });
         });
+    },
+    googleLogin(googleToken) {
+        return this.externalLogin(googleToken, "google");
+    },
+    facebookLogin(facebookToken) {
+        return this.externalLogin(facebookToken, "facebook")
     },
     register(userData) {
         var config = {

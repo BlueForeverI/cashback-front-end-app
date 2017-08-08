@@ -48,6 +48,12 @@
             @error="onGoogleSignInError">
             Register with Google
       </g-signin-button>
+      <fb-signin-button
+        :params="fbSignInParams"
+        @success="onFbSignInSuccess"
+        @error="onFbSignInError">
+        Register with Facebook
+      </fb-signin-button>
     </form>
     <p>{{errorMessage}}</p>
   </div>
@@ -67,6 +73,10 @@ export default {
       confirm_password:'',
       googleSignInParams: {
                 client_id: '366762494274-ocpbfj8q34pgn6f4omkt8l5jq5bhk3bd.apps.googleusercontent.com'
+      },
+      fbSignInParams: {
+        scope: 'public_profile,email',
+        return_scopes: true
       }
     }
   },
@@ -107,25 +117,32 @@ export default {
       });
     },
     onGoogleSignInSuccess (googleUser) {
-            var self = this;
-            var profile = googleUser.getBasicProfile();
-            this.$store.dispatch('register', {
-                email: profile['U3'],
-                password: profile['Eea'],
-                firstName: profile['ofa'],
-                lastName: profile['wea'],
-                imageUrl: profile['Paa']
-            })
-            .then(response => {
-                var token = googleUser.Zi.access_token;
-                self.$store.dispatch("googleLogin", token);
-            },
-            error => console.log(error));
-        },
+      var self = this;
+      var profile = googleUser.getBasicProfile();
+      this.$store.dispatch('register', {
+          email: profile['U3'],
+          password: profile['Eea'],
+          firstName: profile['ofa'],
+          lastName: profile['wea'],
+          imageUrl: profile['Paa']
+      })
+      .then(response => {
+          var token = googleUser.Zi.access_token;
+          self.$store.dispatch("googleLogin", token);
+      },
+      error => console.log(error));
+    },
     onGoogleSignInError (error) {
       console.log('OH NOES', error)
-    } 
-    }
+    },
+	  onFbSignInSuccess (response) {
+      var token = response.authResponse.accessToken;
+      this.$store.dispatch("facebookLogin", token);
+	  },
+	  onFbSignInError (error) {
+	    console.log('OH NOES', error)
+	  } 
+  }
 }
 </script>
 
@@ -151,5 +168,12 @@ export default {
   background-color: #3c82f7;
   color: #fff;
   box-shadow: 0 3px 0 #0f69ff;
+}
+.fb-signin-button {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #4267b2;
+  color: #fff;
 }
 </style>

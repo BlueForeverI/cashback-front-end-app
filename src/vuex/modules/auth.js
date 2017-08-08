@@ -39,15 +39,20 @@ const actions = {
         localStorage.removeItem("token");
         commit(types.LOGOUT)
     },
+    externalLogin(promise, commit) {
+        promise.then(response => {
+            localStorage.setItem('token', response.data.access_token);
+            commit(types.LOGIN_SUCCESS)
+            router.push("/")
+        }, error => {
+            commit(types.ERROR, { errorMessage: error.response.data.error_description })
+        });
+    },
     googleLogin({ commit }, googleToken) {
-        auth.googleLogin(googleToken)
-            .then(response => {
-                localStorage.setItem('token', response.data.access_token);
-                commit(types.LOGIN_SUCCESS)
-                router.push("/")
-            }, error => {
-                commit(types.ERROR, { errorMessage: error.response.data.error_description })
-            })
+        actions.externalLogin(auth.googleLogin(googleToken), commit)
+    },
+    facebookLogin({ commit }, facebookToken) {
+        actions.externalLogin(auth.facebookLogin(facebookToken), commit)
     }
 }
 
