@@ -17,28 +17,31 @@ Environment variables used in the application can be found in env.js file
  | **client_secret** | Client secret|
  | **scope** | Scope of the authorization granted |
 
- Following variables are needed for [OAuth 2.0](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) authentication. For values of the grant_type, client_id, client_secret and scope you can use values that can be seeded with 'gradle seedData' command in the backend app.
+ Following variables are needed for [OAuth 2.0](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) authentication. For values of the grant_type, client_id, client_secret and scope you can use values that can be seeded with 'gradle seedData' command in the backend app. See Cashback API backend [documentation](https://github.com/BlueForeverI/cashback-back-end-app).
 
-## Build Setup
 
+
+## Building
 ``` bash
 # install dependencies
 npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Running 
+default development server points at http://localhost:8080
+
+## Branching and pull requests
+
+The following branching convention is used:
+
+| Branch | Description |
+| ------ | ------ |
+| master | Used for production |
+| dev | Used for dev/QA |
+| Feature branch | Used for a separate feature. The name should be `CS-{Trello task ID}`. Example: `CS-30` |
+
+When a feature is ready, a PR should be made to `dev`. The feature branch should not break the Gradle build.
+The PR, branch and commit(s) should be attached to the Trello task manually. via (Power-Ups/GitHug option on the right when editing a task)
