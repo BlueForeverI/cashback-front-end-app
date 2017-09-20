@@ -19,8 +19,6 @@ Environment variables used in the application can be found in env.js file
 
  Following variables are needed for [OAuth 2.0](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) authentication. For values of the grant_type, client_id, client_secret and scope you can use values that can be seeded with 'gradle seedData' command in the backend app. See Cashback API backend [documentation](https://github.com/BlueForeverI/cashback-back-end-app).
 
-
-
 ## Building
 ``` bash
 # install dependencies
@@ -45,3 +43,7 @@ The following branching convention is used:
 
 When a feature is ready, a PR should be made to `dev`. The feature branch should not break the Gradle build.
 The PR, branch and commit(s) should be attached to the Trello task manually. via (Power-Ups/GitHug option on the right when editing a task)
+
+## Resources
+
+[Awesome-vue](https://github.com/vuejs/awesome-vue) has tons of resources related to VueJS library that can be useful in future.
