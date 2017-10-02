@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <p>
-      <router-link to="/dashboard">Dashboard</router-link>
-      <router-link to="/resources">Resources</router-link>
+      <router-link to="/dashboard" v-if="isLoggedIn">Dashboard</router-link>
       <router-link to="/about">About</router-link>
       <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
       <router-link to="/register" v-if="!isLoggedIn">Register</router-link>
