@@ -1,59 +1,93 @@
 <template>
   <div>
-    <h2>Register</h2>
-    <form @submit.prevent="register">
-      <label>Firstname</label> 
-      <input v-model="firstName" 
-             @input="$v.firstName.$touch"
-             v-bind:class="{error: $v.firstName.$error, valid: $v.firstName.$dirty && !$v.firstName.$invalid}"
-             placeholder="first name">
-      <span  v-if="$v.firstName.$error && !$v.firstName.required">Firstname is required.</span><br/>
+    <form  class="form-horizontal" @submit.prevent="register">
+    <div class="col-sm-offset-2"><h2>Register</h2></div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Firstname</label> 
+        <div class="col-sm-6">
+          <input v-model="firstName" 
+                 class="form-control"
+                 @input="$v.firstName.$touch"
+                 v-bind:class="{error: $v.firstName.$error, valid: $v.firstName.$dirty && !$v.firstName.$invalid}"
+                 placeholder="first name">
+        </div>
+        <span  v-if="$v.firstName.$error && !$v.firstName.required">Firstname is required.</span><br/>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2">Lastname</label> 
+        <div class="col-sm-6">
+          <input v-model="lastName" 
+                 class="form-control"
+                 @input="$v.lastName.$touch" 
+                 v-bind:class="{error: $v.lastName.$error, valid: $v.lastName.$dirty && !$v.lastName.$invalid}"
+                 placeholder="last name">
+        </div>
+        <span v-if="$v.lastName.$error && !$v.lastName.required">Lastname is required.</span><br/>
+      </div>
       
-      <label>Lastname</label> 
-      <input v-model="lastName" 
-             @input="$v.lastName.$touch" 
-             v-bind:class="{error: $v.lastName.$error, valid: $v.lastName.$dirty && !$v.lastName.$invalid}"
-             placeholder="last name">
-      <span v-if="$v.lastName.$error && !$v.lastName.required">Lastname is required.</span><br/>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Email</label> 
+        <div class="col-sm-6">
+          <input v-model="email"
+                 class="form-control"
+                 @input="$v.email.$touch" 
+                 v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
+                 placeholder="email">
+        </div>
+        <span v-if="$v.email.$error && !$v.email.required">Email is required.</span><br/>
+        <span v-if="$v.email.$error && !$v.email.email">Email is not valid</span>
+      </div>
       
-      <label>Email</label> 
-      <input v-model="email"
-             @input="$v.email.$touch" 
-             v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
-             placeholder="email">
-      <span v-if="$v.email.$error && !$v.email.required">Email is required.</span><br/>
-      <span v-if="$v.email.$error && !$v.email.email">Email is not valid</span>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Password</label> 
+        <div class="col-sm-6">
+          <input v-model="password"
+                 class="form-control"
+                 @input="$v.password.$touch"  
+                 v-bind:class="{error: $v.password.$error, valid: $v.password.$dirty && !$v.password.$invalid}"
+                 placeholder="password" 
+                 type="password">
+        </div>
+        <span v-if="$v.password.$error && !$v.password.required">Password is required.</span><br/>
+      </div>
+      
+      <div class="form-group">
+        <label class="control-label col-sm-2">Confirm Password</label> 
+        <div class="col-sm-6">
+          <input v-model="confirm_password"
+                 class="form-control"
+                 @input="$v.confirm_password.$touch"  
+                 v-bind:class="{error: $v.confirm_password.$error, valid: $v.confirm_password.$dirty && !$v.confirm_password.$invalid}"
+                 placeholder="confirm_password" 
+                 type="password">
+        </div>
+        <span v-if="$v.confirm_password.$error && !$v.confirm_password.required">Password is required.</span>
+        <span v-if="$v.confirm_password.$error && !$v.confirm_password.sameAsPassword">Two passwords do not match.</span><br/>
+      </div>
+      
+      <div class="form-group"> <!-- Submit Button -->
+        <div class="col-sm-10 col-sm-offset-2">                     
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </div>
 
-      <label>Password</label> 
-      <input v-model="password"
-             @input="$v.password.$touch"  
-             v-bind:class="{error: $v.password.$error, valid: $v.password.$dirty && !$v.password.$invalid}"
-             placeholder="password" 
-             type="password">
-      <span v-if="$v.password.$error && !$v.password.required">Password is required.</span><br/>
-
-      <label>Confirm Password</label> 
-      <input v-model="confirm_password"
-             @input="$v.confirm_password.$touch"  
-             v-bind:class="{error: $v.confirm_password.$error, valid: $v.confirm_password.$dirty && !$v.confirm_password.$invalid}"
-             placeholder="confirm_password" 
-             type="password">
-      <span v-if="$v.confirm_password.$error && !$v.confirm_password.required">Password is required.</span>
-      <span v-if="$v.confirm_password.$error && !$v.confirm_password.sameAsPassword">Two passwords do not match.</span><br/>
-
-      <button type="submit">register</button>
-      <g-signin-button
+      <div class="form-group">
+         <div class="col-sm-10 col-sm-offset-4">                    
+         <g-signin-button
             :params="googleSignInParams"
             @success="onGoogleSignInSuccess"
             @error="onGoogleSignInError">
             Register with Google
       </g-signin-button>
-      <fb-signin-button
+       <fb-signin-button
         :params="fbSignInParams"
         @success="onFbSignInSuccess"
         @error="onFbSignInError">
         Register with Facebook
       </fb-signin-button>
+        </div>
+      </div>     
     </form>
     <p>{{errorMessage}}</p>
   </div>
