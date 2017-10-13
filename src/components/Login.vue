@@ -1,22 +1,43 @@
 <template>
   <div>
-    <h2>Login</h2>
-    <form @submit.prevent="login">
-      <label><input v-model="email" placeholder="email"></label>
-      <label><input v-model="password" placeholder="password" type="password"></label><br>
-      <button type="submit">login</button>
-      <g-signin-button
-        :params="googleSignInParams"
-        @success="onSignInSuccess"
-        @error="onSignInError">
-        Sign in with Google
-      </g-signin-button>
-      <fb-signin-button
-        :params="fbSignInParams"
-        @success="onFbSignInSuccess"
-        @error="onFbSignInError">
-        Sign in with Facebook
-      </fb-signin-button>
+    <form class="form-horizontal" @submit.prevent="login">
+      <div class="col-sm-offset-2"><h2>Sign in</h2></div>
+      <div class="form-group">
+        <label class="control-label col-sm-2">Email</label> 
+        <div class="col-sm-6">
+          <input class="form-control" v-model="email" placeholder="email">
+        </div>
+       </div>
+       <div class="form-group">
+        <label class="control-label col-sm-2">Password</label> 
+        <div class="col-sm-6">
+          <input class="form-control" v-model="password" placeholder="password" type="password">
+        </div>
+       </div>
+
+       <div class="form-group">
+         <div class="col-sm-10 col-sm-offset-2">
+          <button class="btn btn-primary" type="submit">Sign in</button>
+         </div>
+      </div>
+
+      <div class="form-group">
+         <div class="col-sm-10 col-sm-offset-4">
+          <g-signin-button
+            :params="googleSignInParams"
+            @success="onSignInSuccess"
+            @error="onSignInError">
+            Sign in with Google
+          </g-signin-button>
+          <fb-signin-button
+            :params="fbSignInParams"
+            @success="onFbSignInSuccess"
+            @error="onFbSignInError">
+            Sign in with Facebook
+          </fb-signin-button>
+         </div>
+      </div>
+
     </form>
     <p>{{errorMessage}}</p>
   </div>
