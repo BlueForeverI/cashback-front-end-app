@@ -1,0 +1,10 @@
+{
+    "labels": {
+        "en": {
+            "dashboardTitle": "Dashboard"
+        },
+        "bg": {
+            "dashboardTitle": "Табло"
+        }
+    }
+}

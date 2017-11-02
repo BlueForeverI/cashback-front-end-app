@@ -1,0 +1,20 @@
+{
+    "labels": {
+        "en": {
+            "loginTitle": "Sign In",
+            "emailLabel": "Email",
+            "passwordLabel": "Password",
+            "loginButonLabel": "Sign In",
+            "googleLoginLabel": "Sign in with Google",
+            "facebookLoginLabel": "Sign in with Facebook"
+        },
+        "bg": {
+            "loginTitle": "Вход",
+            "emailLabel": "Email",
+            "passwordLabel": "Парола",
+            "loginButonLabel": "Вход",
+            "googleLoginLabel": "Вход с Google",
+            "facebookLoginLabel": "Вход с Facebook"
+        }
+    }
+}

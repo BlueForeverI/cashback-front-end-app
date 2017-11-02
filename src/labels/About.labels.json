@@ -1,0 +1,12 @@
+{
+    "labels": {
+        "en": {
+            "aboutTitle": "About",
+            "aboutDescription": "Our app encourage people to shop online with big pleasure and even bigger discounts."
+        },
+        "bg": {
+            "aboutTitle": "За нас",
+            "aboutDescription": "Нашето приложение ви насърчава да пазарувате онлайн с голямо удоволстив и още по-големи намаления"
+        }
+    }
+}

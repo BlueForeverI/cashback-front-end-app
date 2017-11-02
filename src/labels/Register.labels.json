@@ -1,0 +1,26 @@
+{
+    "labels": {
+        "en": {
+            "registerTitle": "Register",
+            "firstNameLabel": "First Name",
+            "lastNameLabel": "Last Name",
+            "emailLabel": "Email",
+            "passwordLabel": "Password",
+            "confirmPasswordLabel": "Confirm Password",
+            "registerButtonLabel": "Register",
+            "registerWithGoogleLabel": "Register with Google",
+            "registerWitFacebookLabel": "Register with Facebook"
+        },
+        "bg": {
+            "registerTitle": "Регистрация",
+            "firstNameLabel": "Име",
+            "lastNameLabel": "Фамилия",
+            "emailLabel": "Email",
+            "passwordLabel": "Парола",
+            "confirmPasswordLabel": "Повтори паролата",
+            "registerButtonLabel": "Регистрирация",
+            "registerWithGoogleLabel": "Регистрирация с Google",
+            "registerWitFacebookLabel": "Регистрация с Facebook"
+        }
+    }
+}

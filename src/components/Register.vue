@@ -1,65 +1,65 @@
 <template>
   <div>
     <form  class="form-horizontal" @submit.prevent="register">
-    <div class="col-sm-offset-2"><h2>Register</h2></div>
+    <div class="col-sm-offset-2"><h2>{{ labels.registerTitle }}</h2></div>
       <div class="form-group">
-        <label class="control-label col-sm-2">Firstname</label> 
+        <label class="control-label col-sm-2">{{ labels.firstNameLabel }}</label> 
         <div class="col-sm-6">
           <input v-model="firstName" 
                  class="form-control"
                  @input="$v.firstName.$touch"
                  v-bind:class="{error: $v.firstName.$error, valid: $v.firstName.$dirty && !$v.firstName.$invalid}"
-                 placeholder="first name">
+                 v-bind:placeholder="labels.firstNameLabel">
         </div>
         <span  v-if="$v.firstName.$error && !$v.firstName.required">Firstname is required.</span><br/>
       </div>
 
       <div class="form-group">
-        <label class="control-label col-sm-2">Lastname</label> 
+        <label class="control-label col-sm-2">{{ labels.lastNameLabel }}</label> 
         <div class="col-sm-6">
           <input v-model="lastName" 
                  class="form-control"
                  @input="$v.lastName.$touch" 
                  v-bind:class="{error: $v.lastName.$error, valid: $v.lastName.$dirty && !$v.lastName.$invalid}"
-                 placeholder="last name">
+                 v-bind:placeholder="labels.lastNameLabel">
         </div>
         <span v-if="$v.lastName.$error && !$v.lastName.required">Lastname is required.</span><br/>
       </div>
       
       <div class="form-group">
-        <label class="control-label col-sm-2">Email</label> 
+        <label class="control-label col-sm-2">{{ labels.emailLabel }}</label> 
         <div class="col-sm-6">
           <input v-model="email"
                  class="form-control"
                  @input="$v.email.$touch" 
                  v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
-                 placeholder="email">
+                 v-bind:placeholder="labels.emailLabel">
         </div>
         <span v-if="$v.email.$error && !$v.email.required">Email is required.</span><br/>
         <span v-if="$v.email.$error && !$v.email.email">Email is not valid</span>
       </div>
       
       <div class="form-group">
-        <label class="control-label col-sm-2">Password</label> 
+        <label class="control-label col-sm-2">{{ labels.passwordLabel }}</label> 
         <div class="col-sm-6">
           <input v-model="password"
                  class="form-control"
                  @input="$v.password.$touch"  
                  v-bind:class="{error: $v.password.$error, valid: $v.password.$dirty && !$v.password.$invalid}"
-                 placeholder="password" 
+                 v-bind:placeholder="labels.passwordLabel" 
                  type="password">
         </div>
         <span v-if="$v.password.$error && !$v.password.required">Password is required.</span><br/>
       </div>
       
       <div class="form-group">
-        <label class="control-label col-sm-2">Confirm Password</label> 
+        <label class="control-label col-sm-2">{{ labels.confirmPasswordLabel }}</label> 
         <div class="col-sm-6">
           <input v-model="confirm_password"
                  class="form-control"
                  @input="$v.confirm_password.$touch"  
                  v-bind:class="{error: $v.confirm_password.$error, valid: $v.confirm_password.$dirty && !$v.confirm_password.$invalid}"
-                 placeholder="confirm_password" 
+                 v-bind:placeholder="labels.confirmPasswordLabel" 
                  type="password">
         </div>
         <span v-if="$v.confirm_password.$error && !$v.confirm_password.required">Password is required.</span>
@@ -68,7 +68,7 @@
       
       <div class="form-group"> <!-- Submit Button -->
         <div class="col-sm-10 col-sm-offset-2">                     
-          <button type="submit" class="btn btn-primary">Register</button>
+          <button type="submit" class="btn btn-primary">{{ labels.registerButtonLabel }}</button>
         </div>
       </div>
 
@@ -78,13 +78,13 @@
             :params="googleSignInParams"
             @success="onGoogleSignInSuccess"
             @error="onGoogleSignInError">
-            Register with Google
+            {{ labels.registerWithGoogleLabel }}
       </g-signin-button>
        <fb-signin-button
         :params="fbSignInParams"
         @success="onFbSignInSuccess"
         @error="onFbSignInError">
-        Register with Facebook
+        {{ labels.registerWitFacebookLabel }}
       </fb-signin-button>
         </div>
       </div>     
@@ -94,6 +94,7 @@
 </template>
 
 <script>
+import { labels } from '../labels/Register.labels.json'
 import { mapGetters } from 'vuex'
 import { required, email, sameAs, minLength } from 'vuelidate/lib/validators'
 
@@ -111,7 +112,8 @@ export default {
       fbSignInParams: {
         scope: 'public_profile,email',
         return_scopes: true
-      }
+      },
+      labels: labels[process.env.LANG]
     }
   },
   validations:{
