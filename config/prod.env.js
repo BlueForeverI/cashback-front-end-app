@@ -7,4 +7,5 @@ module.exports = merge({}, {
     OAUTH_CLIENT_ID: `"${process.env.CASHBACK_OAUTH_CLIENT_ID}"`,
     OAUTH_CLIENT_SECRET: `"${process.env.CASHBACK_OAUTH_CLIENT_SECRET}"`,
     OAUTH_SCOPE: '"read,write"',
+    LANG: '"en"'
 })

@@ -1,0 +1,12 @@
+{
+    "labels": {
+        "en": {
+            "homeTitle": "Home",
+            "homeDescription": "Get your cashback with us!"
+        },
+        "bg": {
+            "homeTitle": "Начало",
+            "homeDescription": "Вземете своя кешбек с нас!"
+        }
+    }
+}

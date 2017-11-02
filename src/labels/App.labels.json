@@ -1,0 +1,20 @@
+{
+    "labels": {
+        "en": {
+            "toggleNavigation": "Toggle Navigation",
+            "dashboard": "Dashboard",
+            "about": "About",
+            "signUp": "Sign Up",
+            "signIn": "Sign In",
+            "logout": "Logout"
+        },
+        "bg": {
+            "toggleNavigation": "Навигация",
+            "dashboard": "Табло",
+            "about": "За Нас",
+            "signUp": "Регистрация",
+            "signIn": "Влез",
+            "logout": "Изход"
+        }
+    }
+}

@@ -4,34 +4,22 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only">{{ labels.toggleNavigation }}</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <router-link to="/"  class="navbar-brand">YMCMB</router-link>
+        <router-link to="/"  class="navbar-brand">Keshback</router-link>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <router-link to="/dashboard" tag="li" v-if="isLoggedIn"><a>Dashboard</a></router-link>
-          <router-link to="/about" tag="li"><a>About</a></router-link>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Bitcoin</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
+          <router-link to="/dashboard" tag="li" v-if="isLoggedIn"><a>{{ labels.dashboard }}</a></router-link>
+          <router-link to="/about" tag="li"><a>{{ labels.about }}</a></router-link>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <router-link to="/register"  tag="li" v-if="!isLoggedIn"><a>Sign up</a></router-link>
-          <router-link to="/login"  tag="li" v-if="!isLoggedIn"><a>Sign in</a></router-link>
-          <li @click="logout" v-if="isLoggedIn"><a>Logout</a></li>
+          <router-link to="/register"  tag="li" v-if="!isLoggedIn"><a>{{ labels.signUp }}</a></router-link>
+          <router-link to="/login"  tag="li" v-if="!isLoggedIn"><a>{{ labels.signIn }}</a></router-link>
+          <li @click="logout" v-if="isLoggedIn"><a href="#">{{ labels.logout }}</a></li>
         </ul>
       </div>
     </div>
@@ -42,6 +30,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { labels } from './labels/App.labels.json'
+
 export default {
   name: 'app',
   computed: {
@@ -55,6 +45,11 @@ export default {
      this.$store.dispatch('logout');
     }
   },
+  data: () => { 
+    return {
+      labels: labels[process.env.LANG]
+    }
+  }
 }
 </script>
 
