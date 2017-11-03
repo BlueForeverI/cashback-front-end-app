@@ -9,7 +9,14 @@
             "confirmPasswordLabel": "Confirm Password",
             "registerButtonLabel": "Register",
             "registerWithGoogleLabel": "Register with Google",
-            "registerWitFacebookLabel": "Register with Facebook"
+            "registerWitFacebookLabel": "Register with Facebook",
+            "firstNameRequiredMessage": "First name is required",
+            "lastNameRequiredMessage": "Last name is required.",
+            "emailRequiredMessage": "Email is required",
+            "emailNotValidMessage": "Email is not valid",
+            "passwordRequiredMessage": "Password is required",
+            "repeatPasswordRequiredMessage": "Pelase repeat the password",
+            "passwordsNotMatchingMessage": "Two passwords do not match"
         },
         "bg": {
             "registerTitle": "Регистрация",
@@ -20,7 +27,14 @@
             "confirmPasswordLabel": "Повтори паролата",
             "registerButtonLabel": "Регистрирация",
             "registerWithGoogleLabel": "Регистрирация с Google",
-            "registerWitFacebookLabel": "Регистрация с Facebook"
+            "registerWitFacebookLabel": "Регистрация с Facebook",
+            "firstNameRequiredMessage": "Името е задължително",
+            "lastNameRequiredMessage": "Фамилията е задължителна",
+            "emailRequiredMessage": "Email е задължителен",
+            "emailNotValidMessage": "Email полето не е валидно",
+            "passwordRequiredMessage": "Паролата е задължителна",
+            "repeatPasswordRequiredMessage": "Моле, повторете паролата",
+            "passwordsNotMatchingMessage": "Паролите не съвпадат"
         }
     }
 }
