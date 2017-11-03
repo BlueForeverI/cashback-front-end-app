@@ -80,14 +80,14 @@ export default {
       this.$store.dispatch("googleLogin", token);
     },
     onSignInError (error) {
-      console.log('OH NOES', error)
+      console.log('Facebook signin failed', error)
     },
 	  onFbSignInSuccess (response) {
       var token = response.authResponse.accessToken;
       this.$store.dispatch("facebookLogin", token);
 	  },
 	  onFbSignInError (error) {
-	    console.log('OH NOES', error)
+	    console.log('Facebook signin failed', error)
 	  }  
 	}
 }

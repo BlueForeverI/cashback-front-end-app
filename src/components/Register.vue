@@ -11,7 +11,7 @@
                  v-bind:class="{error: $v.firstName.$error, valid: $v.firstName.$dirty && !$v.firstName.$invalid}"
                  v-bind:placeholder="labels.firstNameLabel">
         </div>
-        <span  v-if="$v.firstName.$error && !$v.firstName.required">Firstname is required.</span><br/>
+        <span  v-if="$v.firstName.$error && !$v.firstName.required">{{ labels.firstNameRequiredMessage }}</span><br/>
       </div>
 
       <div class="form-group">
@@ -23,7 +23,7 @@
                  v-bind:class="{error: $v.lastName.$error, valid: $v.lastName.$dirty && !$v.lastName.$invalid}"
                  v-bind:placeholder="labels.lastNameLabel">
         </div>
-        <span v-if="$v.lastName.$error && !$v.lastName.required">Lastname is required.</span><br/>
+        <span v-if="$v.lastName.$error && !$v.lastName.required">{{ labels.lastNameRequiredMessage }}</span><br/>
       </div>
       
       <div class="form-group">
@@ -35,8 +35,8 @@
                  v-bind:class="{error: $v.email.$error, valid: $v.email.$dirty && !$v.email.$invalid}"
                  v-bind:placeholder="labels.emailLabel">
         </div>
-        <span v-if="$v.email.$error && !$v.email.required">Email is required.</span><br/>
-        <span v-if="$v.email.$error && !$v.email.email">Email is not valid</span>
+        <span v-if="$v.email.$error && !$v.email.required">{{ labels.emailRequiredMessage }}</span><br/>
+        <span v-if="$v.email.$error && !$v.email.email">{{ labels.emailNotValidMessage }}</span>
       </div>
       
       <div class="form-group">
@@ -49,7 +49,7 @@
                  v-bind:placeholder="labels.passwordLabel" 
                  type="password">
         </div>
-        <span v-if="$v.password.$error && !$v.password.required">Password is required.</span><br/>
+        <span v-if="$v.password.$error && !$v.password.required">{{ labels.passwordRequiredMessage }}</span><br/>
       </div>
       
       <div class="form-group">
@@ -62,8 +62,8 @@
                  v-bind:placeholder="labels.confirmPasswordLabel" 
                  type="password">
         </div>
-        <span v-if="$v.confirm_password.$error && !$v.confirm_password.required">Password is required.</span>
-        <span v-if="$v.confirm_password.$error && !$v.confirm_password.sameAsPassword">Two passwords do not match.</span><br/>
+        <span v-if="$v.confirm_password.$error && !$v.confirm_password.required">{{ labels.repeatPasswordRequiredMessage }}</span>
+        <span v-if="$v.confirm_password.$error && !$v.confirm_password.sameAsPassword">{{ labels.passwordsNotMatchingMessage }}</span><br/>
       </div>
       
       <div class="form-group"> <!-- Submit Button -->
