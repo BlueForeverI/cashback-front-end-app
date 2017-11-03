@@ -54,8 +54,8 @@ export default {
 </script>
 
 <style lang="scss">
-$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
-@import 'styles/bootswatch/_variables';
-@import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
-@import 'styles/bootswatch/_bootswatch';
+  $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+  @import 'styles/bootswatch/_variables';
+  @import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap';
+  @import 'styles/bootswatch/_bootswatch';
 </style>
