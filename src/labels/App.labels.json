@@ -6,7 +6,7 @@
             "about": "About",
             "signUp": "Sign Up",
             "signIn": "Sign In",
-            "logout": "Logout"
+            "signOut": "Sign Out"
         },
         "bg": {
             "toggleNavigation": "Навигация",
@@ -14,7 +14,7 @@
             "about": "За Нас",
             "signUp": "Регистрация",
             "signIn": "Влез",
-            "logout": "Изход"
+            "signOut": "Изход"
         }
     }
 }

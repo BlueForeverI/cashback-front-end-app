@@ -18,7 +18,6 @@ export default {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }
-        
         axios.post(process.env.API_URL + '/oauth/token', data, config)
             .then((response) => callback(response))
             .catch((error) => {
