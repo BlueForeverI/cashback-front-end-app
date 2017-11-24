@@ -6,6 +6,6 @@ module.exports = merge({}, {
     OAUTH_GRANT_TYPE: '"password"',
     OAUTH_CLIENT_ID: '"cashback-private-content"',
     OAUTH_CLIENT_SECRET: '"NV2MfFAP4drPaHBC"',
-    OAUTH_SCOPE: '"read,write"',
+    OAUTH_SCOPE: '"read write"',
     LANG: '"en"'
 })

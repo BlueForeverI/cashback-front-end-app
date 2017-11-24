@@ -4,7 +4,6 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <img src="https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Money.PNG/Wads_of_Money_Transparent_PNG_Clip_Art_Image.png?m=1451447702" class="mr-1" width="40" height="40">
     <router-link to="/"  class="navbar-brand" tag="a">Keshback</router-link>
     <div class="collapse navbar-collapse d-flex" id="navbarNavDropdown">
       <ul class="navbar-nav left-nav">
@@ -22,8 +21,7 @@
         </li>
       </ul>
       <ul class="navbar-nav right-nav d-flex justify-content-end align-items-center">
-        <img src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png" class="rounded-circle" width="30" height="30">
-        <span class="mr-2 ml-2">Swag</span>
+        <profile v-if="isLoggedIn"></profile>
         <router-link to="/register" class="nav-item" tag="li" v-if="!isLoggedIn"><a class="nav-link">{{ labels.signUp }}</a></router-link>
         <router-link to="/login" class="nav-item" tag="li" v-if="!isLoggedIn"><a class="nav-link">{{ labels.signIn }}</a></router-link>
         <li class="nav-item" @click="logout" v-if="isLoggedIn">
@@ -39,9 +37,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import { labels } from './labels/App.labels.json'
+import Profile from './components/Profile.vue'
 
 export default {
   name: 'app',
+  components: {Profile},
   computed: {
     // mix the getters into computed with object spread operator
     ...mapGetters([
